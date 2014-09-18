@@ -26,12 +26,14 @@ task main(){
  		int joy1y2 = joystick.joy1_y2;
  		int joy2y1 = joystick.joy2_y1;
  		int joy2y2 = joystick.joy2_y2;
- 		if ((joy1Btn(1)) || (joy2Btn(1)))
+
+ 		if ((joy1Btn(4)) || (joy2Btn(1)))
 			servo[auton] = 175;
- 		if ((joy1Btn(2)) || (joy2Btn(2)))
+ 		if ((joy1Btn(1)) || (joy2Btn(2)))
 			servo[auton] = 0;
-		if ((joy1Btn(4)) || (joy2Btn(4)))
+		if ((joy1Btn(3)) || (joy2Btn(4)))
 			servo[auton] = 255;
+
 		if (abs(joy1y1) >= 15)
 			motor[right] = (joy1y1+72)/2;
 		else
@@ -48,11 +50,14 @@ task main(){
 			motor[leadR] = (joy2y2+72)/2;
 		else
 			motor[leadR] = 0;
-		if ((joy1Btn(6)) || (joy2Btn(6))){ //up
+
+		// Lift up
+		if ((joy1Btn(6)) || (joy2Btn(6))){
 			motor[liftRbottom] = 100;
 			motor[liftLbottom] = -100;
 		}
-		else if ((joy1Btn(8)) || (joy2Btn(8))){ //down
+		// Lift down
+		else if ((joy1Btn(8)) || (joy2Btn(8))){
 			motor[liftRbottom] = -100;
 			motor[liftLbottom] = 100;
 		}
@@ -60,8 +65,9 @@ task main(){
 			motor[liftRbottom] = 0;
 			motor[liftLbottom] = 0;
 		}
-		//LOCK ARMSHHH
-		if ((joy1Btn(3)) || (joy2Btn(3))){
+
+		// LOCK ARMS
+		if ((joy1Btn(2)) || (joy2Btn(2))){
 			servo[auton] = 175;
 			servo[lockL] = 255;
 			servo[lockR] = 0;
